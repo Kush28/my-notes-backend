@@ -1,29 +1,41 @@
 var app = require('../src/app')
-const cluster = require('cluster')
-const os = require('os')
+var cluster = require('cluster')
+var os = require('os')
 var debug = require('debug')('rongohouse-backend:server')
 var http = require('http')
-var port = normalizePort(process.env.PORT || '3000')
+var port = normalizePort(process.env.PORT || '5000')
+var { connectDb } = require('../src/models')
+app.set('port', port)
+var server = http.createServer(app)
 
-if (cluster.isMaster) {
-  const cpuCount = os.cpus().length
-
-  for (let j = 0; j < cpuCount; j++) {
-    cluster.fork()
-  }
-} else {
-  app.set('port', port)
-  var server = http.createServer(app)
+connectDb().then(() => {
+  debug('✌️ DB loaded and connected!')
   server.listen(port)
   server.on('error', onError)
   server.on('listening', onListening)
-}
-
-cluster.on('exit', function (worker) {
-  console.log(`Worker ${worker.id} died'`)
-  console.log(`Staring a new one...`)
-  cluster.fork()
 })
+
+// if (cluster.isMaster) {
+//   const cpuCount = os.cpus().length
+
+//   for (let j = 0; j < cpuCount; j++) {
+//     cluster.fork()
+//   }
+// } else {
+//   connectDb().then(() => {
+//     app.set('port', port)
+//     var server = http.createServer(app)
+//     server.listen(port)
+//     server.on('error', onError)
+//     server.on('listening', onListening)
+//   })
+// }
+
+// cluster.on('exit', function (worker) {
+//   console.log(`Worker ${worker.id} died'`)
+//   console.log(`Staring a new one...`)
+//   cluster.fork()
+// })
 
 function normalizePort(val) {
   var port = parseInt(val, 10)
