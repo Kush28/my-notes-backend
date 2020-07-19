@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  version: v1
+  title: Rongo house APIs
+  description: This are all the APIs that will be used for Rongo house
+paths: 
+  /ping:
+    get:
+      description: |
+        ping then pong!
+      # OpenAPI's operationId may be used to to specify the operation id
+      operationId: ping
+      # x-eov-operation-id may be used to specify the operation id
+      # Used when operationId is omiited. Overrides operationId when both are specified
+      x-eov-operation-id: ping
+      # specifies the path to the operation handler.
+      # the path is relative to the operationHandlers option
+      # e.g. operations/base/path/routes/ping.js
+      x-eov-operation-handler: routes/ping
+      responses:
+        '200':
+          description: OK
+          # ...
+  /pong:
+    post:
+      description: |
+        ping then pong!
+      # OpenAPI's operationId may be used to to specify the operation id
+      operationId: pong
+      # x-eov-operation-id may be used to specify the operation id
+      # Used when operationId is omiited. Overrides operationId when both are specified
+      x-eov-operation-id: pong
+      # specifies the path to the operation handler.
+      # the path is relative to the operationHandlers option
+      # e.g. operations/base/path/routes/ping.js
+      x-eov-operation-handler: routes/ping
+      responses:
+        '200':
+          description: OK
+          # ...
+# Added by API Auto Mocking Plugin
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/kush7/Rongohouse/v1
