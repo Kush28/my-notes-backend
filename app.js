@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 
 const OpenApiValidator = require('express-openapi-validator').OpenApiValidator
-const apiSpec = path.join(__dirname, 'api.yaml')
+const apiSpec = path.join(__dirname, 'openapi.yaml')
 
 var app = express()
 
