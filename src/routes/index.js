@@ -1,12 +1,12 @@
 var express = require('express')
+
 var router = express.Router()
 
-router.get('/ping', function (req, res, next) {
+router.get('/ping', (req, res) => {
   res.render('ping', { title: 'Express' })
 })
 
-router.post('/pong', function(req, res, next){
-  console.log(req.body)
+router.post('/pong', (req, res) => {
   res.render('pong', { title: 'Express' })
 })
 
