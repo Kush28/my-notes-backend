@@ -1,7 +1,9 @@
 import models from '../models'
 
-exports.create = ({ name, avatar }) => {
+exports.create = ({ externalId, externamProvider, name, avatar }) => {
   const user = new models.User({
+    externalId,
+    externamProvider,
     name,
     avatar
   })
@@ -10,13 +12,10 @@ exports.create = ({ name, avatar }) => {
 
 exports.findAll = () => models.User.find()
 
-exports.findOne = (userId, password) =>
-  models.User.findOne({
-    userId,
-    password
-  })
+exports.findByExternal = (externalId) => models.User.findOne({ externalId })
+
+exports.findById = (id) => models.User.findById(id)
 
 exports.update = () => {}
 
 exports.delete = () => {}
-

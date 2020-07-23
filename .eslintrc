@@ -5,7 +5,7 @@
     "browser": true
   },
   "rules": {
-    "brace-style": ["error", "stroustrup"],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
     "comma-dangle": ["error", "never"],
     "no-unused-vars": ["warn"],
     "no-var": ["off"],

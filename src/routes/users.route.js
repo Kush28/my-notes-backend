@@ -1,6 +1,5 @@
 import express from 'express'
 import User from '../controllers/user.controller'
-import use
 
 var router = express.Router()
 

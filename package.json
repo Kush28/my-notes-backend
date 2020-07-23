@@ -11,13 +11,16 @@
     "cluster": "^0.7.7",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "google-auth-library": "^6.0.5",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "mongoose": "^5.9.25",
     "morgan": "~1.9.1",
-    "os": "^0.1.1"
+    "os": "^0.1.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
