@@ -1,16 +1,22 @@
 import models from '../models'
 
-exports.create = () => {
+exports.create = ({ name, avatar }) => {
   const user = new models.User({
-    test: 'kushal'
+    name,
+    avatar
   })
   return user.save()
 }
 
-exports.findAll = () => models.user.findAll()
+exports.findAll = () => models.User.find()
 
-exports.findOne = () => {}
+exports.findOne = (userId, password) =>
+  models.User.findOne({
+    userId,
+    password
+  })
 
 exports.update = () => {}
 
 exports.delete = () => {}
+
