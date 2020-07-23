@@ -1,12 +1,11 @@
 import express from 'express'
 import User from '../controllers/user.controller'
-import verifyToken from '../services/googleOAuth'
+import use
 
 var router = express.Router()
 
 router.post('/login', async (req, res, next) => {
   try {
-    
     const response = await User.create(req.body)
     res.send(response)
   } catch (error) {
