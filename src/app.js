@@ -3,16 +3,20 @@ import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
+import passport from 'passport'
 
 import indexRouter from './routes/index'
 import usersRouter from './routes/users.route'
 import authRouter from './routes/auth.route'
 
-var app = express()
+require('./services/userAuth')
+
+const app = express()
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
 
+app.use(passport.initialize())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -21,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
-app.use('/auth',authRouter)
+app.use('/auth', authRouter)
 
 app.use((req, res, next) => {
   next(createError(404))

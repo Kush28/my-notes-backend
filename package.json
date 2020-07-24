@@ -1,9 +1,9 @@
 {
-  "name": "rongohouse-backend",
+  "name": "mynotes-backend",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "set DEBUG=rongohouse-backend:server && nodemon --exec babel-node ./bin/www",
+    "dev": "set DEBUG=mynotes-backend:server && nodemon --exec babel-node ./bin/www",
     "start": "babel-node ./bin/www",
     "lint:fix": "eslint --fix ./src/**/*.js"
   },
