@@ -27,7 +27,7 @@ passport.use(
       if (!currentUser) {
         const newUser = await User.create({
           externalId: sub,
-          externamProvider: provider,
+          externalProvider: provider,
           name,
           avatar: picture
         })

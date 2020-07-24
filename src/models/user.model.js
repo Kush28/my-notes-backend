@@ -4,9 +4,10 @@ const userSchema = new mongoose.Schema(
   {
     externalId: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
-    externamProvider: {
+    externalProvider: {
       type: String,
       required: true
     },

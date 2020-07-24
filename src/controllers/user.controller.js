@@ -1,9 +1,9 @@
 import models from '../models'
 
-exports.create = ({ externalId, externamProvider, name, avatar }) => {
+exports.create = ({ externalId, externalProvider, name, avatar }) => {
   const user = new models.User({
     externalId,
-    externamProvider,
+    externalProvider,
     name,
     avatar
   })
