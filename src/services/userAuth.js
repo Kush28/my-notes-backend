@@ -5,6 +5,7 @@ import User from '../controllers/user.controller'
 require('dotenv').config()
 
 passport.serializeUser((user, done) => {
+  console.log(user.id)
   done(null, user.id)
 })
 
@@ -23,7 +24,7 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       const { provider, _json } = profile
       const { sub, name, picture } = _json
-      const currentUser = await User.findByExternal(sub)
+      const currentUser = await User.findByExternal(sub, provider)
       if (!currentUser) {
         const newUser = await User.create({
           externalId: sub,

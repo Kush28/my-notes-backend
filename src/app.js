@@ -4,14 +4,16 @@ import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import passport from 'passport'
+import cors from 'cors'
 
 import indexRouter from './routes/index'
-import usersRouter from './routes/users.route'
+import userRouter from './routes/user.route'
 import authRouter from './routes/auth.route'
 
 require('./services/userAuth')
 
 const app = express()
+app.use(cors())
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
@@ -23,8 +25,9 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/user', userRouter)
 app.use('/auth', authRouter)
 
 app.use((req, res, next) => {
