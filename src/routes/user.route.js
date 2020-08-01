@@ -6,7 +6,7 @@ var router = express.Router()
 
 router.use(authMiddleware)
 
-router.get('/login', async (req, res, next) => {
+router.get('/auth', async (req, res, next) => {
   try {
     const { externalId, externalProvider } = req.user
     const response = await User.findByExternal(externalId, externalProvider)

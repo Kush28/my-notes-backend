@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 require('dotenv').config()
 
 const generateAccessToken = (payload) => ({
-  accessToken: jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET)
+  accessToken: jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 24 * 60 * 60 * 60 })
 })
 
 const verifyAccessToken = (token) =>

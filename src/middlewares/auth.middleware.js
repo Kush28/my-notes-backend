@@ -16,7 +16,6 @@ export default async (req, res, next) => {
     req.user = payload
     next()
   } catch (error) {
-    error.status = 403
-    next(error)
+    res.sendStatus(403)
   }
 }
