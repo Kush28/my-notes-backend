@@ -13,15 +13,22 @@ exports.create = ({ externalId, externalProvider, name, avatar }) => {
 exports.findAll = () => models.User.find()
 
 exports.findByExternal = async (extID, provider) => {
-  const { id, externalId, externalProvider, name, avatar } = await models.User.findOne({
+  const { id, externalId, externalProvider, name, avatar, notes } = await models.User.findOne({
     externalId: extID,
     externalProvider: provider
   })
-  return { id, externalId, externalProvider, name, avatar }
+  return { id, externalId, externalProvider, name, avatar, notes }
 }
 
 exports.findById = (id) => models.User.findById(id)
 
-exports.update = () => {}
+exports.addNote = async (extID, provider, newNoteId) =>
+  models.User.updateOne(
+    {
+      externalId: extID,
+      externalProvider: provider
+    },
+    { $push: { notes: newNoteId } }
+  )
 
 exports.delete = () => {}

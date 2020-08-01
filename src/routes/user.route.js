@@ -9,8 +9,8 @@ router.use(authMiddleware)
 router.get('/auth', async (req, res, next) => {
   try {
     const { externalId, externalProvider } = req.user
-    const response = await User.findByExternal(externalId, externalProvider)
-    res.json(response)
+    const { name, avatar } = await User.findByExternal(externalId, externalProvider)
+    res.json({ name, avatar })
   } catch (error) {
     next(error)
   }

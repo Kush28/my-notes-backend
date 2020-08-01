@@ -17,6 +17,9 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String
+    },
+    notes: {
+      type: Array
     }
   },
   {

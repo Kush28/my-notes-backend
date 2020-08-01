@@ -5,7 +5,6 @@ import User from '../controllers/user.controller'
 require('dotenv').config()
 
 passport.serializeUser((user, done) => {
-  console.log(user.id)
   done(null, user.id)
 })
 

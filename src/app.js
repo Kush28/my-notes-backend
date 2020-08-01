@@ -9,6 +9,7 @@ import cors from 'cors'
 import indexRouter from './routes/index'
 import userRouter from './routes/user.route'
 import authRouter from './routes/auth.route'
+import noteRouter from './routes/note.route'
 
 require('./services/userAuth')
 
@@ -25,10 +26,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-
 app.use('/', indexRouter)
 app.use('/user', userRouter)
 app.use('/auth', authRouter)
+app.use('/note', noteRouter)
 
 app.use((req, res, next) => {
   next(createError(404))
