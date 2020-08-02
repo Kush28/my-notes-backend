@@ -31,4 +31,13 @@ exports.addNote = async (extID, provider, newNoteId) =>
     { $push: { notes: newNoteId } }
   )
 
+exports.deleteNote = async (extID, provider, noteId) =>
+  models.User.updateOne(
+    {
+      externalId: extID,
+      externalProvider: provider
+    },
+    { $pullAll: { notes: [noteId] } }
+  )
+
 exports.delete = () => {}

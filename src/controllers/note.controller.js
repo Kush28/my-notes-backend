@@ -13,3 +13,5 @@ exports.find = (ids) =>
   models.Note.find({
     _id: { $in: ids }
   })
+
+exports.delete = (id) => models.Note.findByIdAndDelete(id)

@@ -30,4 +30,16 @@ router.get('/fetch-all', async (req, res, next) => {
   }
 })
 
+router.put('/delete', async (req, res, next) => {
+  try {
+    const { externalId, externalProvider } = req.user
+    const { id } = req.body
+    await Note.delete(id)
+    await User.deleteNote(externalId, externalProvider, id)
+    res.sendStatus(200)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router
