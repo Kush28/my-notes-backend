@@ -11,19 +11,12 @@ variables:
     # azureSubscription: '02b818a0-c895-4a95-b323-fb6178b416c3'
     # webAppName: 'api-my-notes'
     # environmentName: 'api-my-notes'
-    # vmImageName: 'ubuntu-latest'
-
-pool:
-  vmImage: 'ubuntu-latest'
+    # vmImageName: 'ubuntu-latest'    
 
 steps:
-- task: UseNode@1
-  inputs:
-    version: '12.x'
-
 - task: Npm@1
   inputs:
-    command: 'install'
+    command: 'ci'
     verbose: true
 
 - task: DeleteFiles@1
