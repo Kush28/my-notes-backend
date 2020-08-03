@@ -15,10 +15,10 @@ variables:
   azureSubscription: '02b818a0-c895-4a95-b323-fb6178b416c3'
   
   # Web app name
-  webAppName: 'api-mynotes'
+  webAppName: 'api-my-notes'
   
   # Environment name
-  environmentName: 'api-mynotes'
+  environmentName: 'api-my-notes'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
