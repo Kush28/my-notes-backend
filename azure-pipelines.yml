@@ -41,6 +41,14 @@ stages:
     - script: |
         npm install
       displayName: 'npm install'
+    
+    - script: | 
+        node -v
+      displayName: 'Node version'
+
+    - script: |  
+        npm -v
+      displayName: 'NPM version'
       
     - task: ArchiveFiles@2
       displayName: 'Archive files'
