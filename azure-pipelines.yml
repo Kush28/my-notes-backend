@@ -8,6 +8,9 @@ trigger:
 
 variables:
 
+  # Variable group
+  -group: 'backend-lib'
+
   # Azure Resource Manager connection created during pipeline creation
   azureSubscription: '02b818a0-c895-4a95-b323-fb6178b416c3'
   
