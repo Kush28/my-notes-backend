@@ -4,8 +4,8 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- none
-
+  - none
+  
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
@@ -30,7 +30,15 @@ stages:
       vmImage: $(vmImageName)
       
     steps:
-    
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '12.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install
+      displayName: 'npm install'
+      
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
@@ -64,4 +72,4 @@ stages:
               appType: webAppLinux
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-              startUpCommand: 'npm install && npm run start'
+              startUpCommand: 'npm run start'
