@@ -33,14 +33,14 @@ stages:
       vmImage: $(vmImageName)
       
     steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '12.x'
-      displayName: 'Install Node.js'
+    # - task: NodeTool@0
+    #   inputs:
+    #     versionSpec: '12.x'
+    #   displayName: 'Install Node.js'
 
-    - script: |
-        npm install
-      displayName: 'npm install'
+    # - script: |
+    #     npm install
+    #   displayName: 'npm install'
       
     - task: ArchiveFiles@2
       displayName: 'Archive files'
@@ -77,4 +77,4 @@ stages:
               appType: webAppLinux
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-              startUpCommand: 'npm run start'
+              startUpCommand: 'npm ci && npm run start'
