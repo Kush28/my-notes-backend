@@ -13,10 +13,12 @@ exports.create = ({ externalId, externalProvider, name, avatar }) => {
 exports.findAll = () => models.User.find()
 
 exports.findByExternal = async (extID, provider) => {
-  const { id, externalId, externalProvider, name, avatar, notes } = await models.User.findOne({
+  const user = await models.User.findOne({
     externalId: extID,
     externalProvider: provider
   })
+  if (!user) return null
+  const { id, externalId, externalProvider, name, avatar, notes } = user
   return { id, externalId, externalProvider, name, avatar, notes }
 }
 
