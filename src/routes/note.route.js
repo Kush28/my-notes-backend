@@ -19,8 +19,17 @@ router.post('/create', async (req, res, next) => {
   }
 })
 
+router.post('/update', async (req, res, next) => {
+  try {
+    const { id, title, body, tags } = req.body
+    await Note.update({ id, title, body, tags })
+    res.sendStatus(200)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.get('/fetch-all', async (req, res, next) => {
-  console.log(req)
   try {
     const { externalId, externalProvider } = req.user
     const { notes } = await User.findByExternal(externalId, externalProvider)
