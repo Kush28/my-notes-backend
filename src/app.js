@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import passport from 'passport'
 import cors from 'cors'
+import helmet from 'helmet'
 
 import indexRouter from './routes/index'
 import userRouter from './routes/user.route'
@@ -15,6 +16,7 @@ require('./services/userAuth')
 
 const app = express()
 app.use(cors())
+app.use(helmet())
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')

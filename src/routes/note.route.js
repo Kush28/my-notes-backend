@@ -20,6 +20,7 @@ router.post('/create', async (req, res, next) => {
 })
 
 router.get('/fetch-all', async (req, res, next) => {
+  console.log(req)
   try {
     const { externalId, externalProvider } = req.user
     const { notes } = await User.findByExternal(externalId, externalProvider)
