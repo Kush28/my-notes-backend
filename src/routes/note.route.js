@@ -22,6 +22,10 @@ router.post('/create', async (req, res, next) => {
 router.post('/update', async (req, res, next) => {
   try {
     const { id, title, body, tags } = req.body
+    if (!id) {
+      res.sendStatus(403)
+      return
+    }
     await Note.update({ id, title, body, tags })
     res.sendStatus(200)
   } catch (error) {
@@ -40,11 +44,11 @@ router.get('/fetch-all', async (req, res, next) => {
   }
 })
 
-router.get('/fetch', async (req, res, next) => {
+router.get('/fetch/:id', async (req, res, next) => {
   try {
     const { externalId, externalProvider } = req.user
     const { notes } = await User.findByExternal(externalId, externalProvider)
-    const { id } = req.body
+    const { id } = req.params
     if (!notes.includes(id)) {
       res.sendStatus(404)
       return
