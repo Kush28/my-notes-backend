@@ -40,6 +40,22 @@ router.get('/fetch-all', async (req, res, next) => {
   }
 })
 
+router.get('/fetch', async (req, res, next) => {
+  try {
+    const { externalId, externalProvider } = req.user
+    const { notes } = await User.findByExternal(externalId, externalProvider)
+    const { id } = req.body
+    if (!notes.includes(id)) {
+      res.sendStatus(404)
+      return
+    }
+    const noteData = await Note.find(id)
+    res.json(noteData[0])
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.put('/delete', async (req, res, next) => {
   try {
     const { externalId, externalProvider } = req.user
