@@ -4,7 +4,7 @@ import User from './user.model'
 import Note from './note.model'
 
 const connectDb = () => mongoose.connect(
-  'mongodb+srv://kushal:w9Zp1hXqskIQ3B84@cluster0-p1sez.mongodb.net/bongo_rongo?retryWrites=true&w=majority',
+  `mongodb+srv://kushal:oZ16RfMz2Hdt8WD2@cluster0-p1sez.mongodb.net/bongo_rongo?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
