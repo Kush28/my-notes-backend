@@ -16,7 +16,7 @@ passport.deserializeUser(async (id, done) => {
 passport.use(
   new GoogleStrategy(
     {
-      callbackURL: '/auth/google/redirect',
+      callbackURL: 'https://api-kush.herokuapp.com/auth/google/redirect',
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET
     },
